@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>80s Outfit Catalog</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: linear-gradient(135deg, #ff00cc, #3333ff);
+      color: #fff;
+      line-height: 1.6;
+      padding: 20px;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px #000;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ffcc00;
+    }
+
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .outfit-card {
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 2px solid #ffcc00;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+      position: relative;
+    }
+
+    .outfit-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00ffff;
+      filter: brightness(1.2);
+    }
+
+    .outfit-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      transition: transform 0.2s;
+    }
+
+    .outfit-card img:hover {
+      transform: scale(1.05);
+    }
+
+    .outfit-card h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #00ffff;
+    }
+
+    .outfit-card p {
+      font-size: 1em;
+      color: #ffffff;
+    }
+
+    .btn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ffcc00;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background-color: #222;
+      color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal h3 {
+      color: #00ffff;
+      margin-bottom: 10px;
+    }
+
+    .modal p {
+      font-size: 1em;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5em;
+      color: #ffcc00;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #cccccc;
+    }
+
+    footer a {
+      color: #ffcc00;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Totally 80s Outfit Catalog</h1>
+    <p>Neon. Spandex. Big Hair. Let’s go back in time!</p>
+  </header>
+
+  <main class="catalog">
+    <!-- Outfit 1 -->
+    <section class="outfit-card">
+      <img src="https://tse2.mm.bing.net/th?id=OIP.B7Ds5XeFFoMBfzTcvgx9uQAAAA&pid=Api" alt="Denim & Neon Duo" />
+      <h2>Denim & Neon Duo</h2>
+      <p>Acid-wash jeans and neon jackets for the win!</p>
+      <button class="btn" onclick="openModal('Denim & Neon Duo', 'This look screams vintage cool with acid-wash denim, high-top sneakers, and neon pink shades. Iconic for a reason! The 80s neon trend, mixed with a classic denim vibe, made a bold statement of casual rebellion.')">View Details</button>
+    </section>
+
+    <!-- Outfit 2 -->
+    <section class="outfit-card">
+      <img src="https://tse3.mm.bing.net/th?id=OIP.Tgq1r9O5zxlXFftiIMosXwHaKl&pid=Api" alt="Work It Out Aerobics" />
+      <h2>Work It Out Aerobics</h2>
+      <p>Leotards, leggings, and headbands. Jane Fonda vibes!</p>
+      <button class="btn" onclick="openModal('Work It Out Aerobics', 'Get sweaty in style with a leotard, neon tights, leg warmers, and a headband. The aerobics craze of the 80s gave birth to a fitness-inspired fashion movement. Think Jane Fonda or Olivia Newton-John in the "Physical" video!')">View Details</button>
+    </section>
+
+    <!-- Outfit 3 -->
+    <section class="outfit-card">
+      <img src="https://tse1.mm.bing.net/th?id=OIP.7vfvDFzX8zUGFe6XPYHVhwHaHa&pid=Api" alt="Power Shoulders & Glam" />
+      <h2>Power Shoulders & Glam</h2>
+      <p>Structured blazers and glitter all day.</p>
+      <button class="btn" onclick="openModal('Power Shoulders & Glam', 'Shoulder pads, bold prints, and bright lipstick make this outfit a real showstopper. A quintessential power move, these outfits were popularized by both men and women in the business and pop culture arenas.')">View Details</button>
+    </section>
+
+    <!-- Outfit 4 -->
+    <section class="outfit-card">
+      <img src="https://tse1.mm.bing.net/th?id=OIP.9Esw05mpRNWg9CBspUWM1gHaKl&pid=Api" alt="Zebra Print Party Dress" />
+      <h2>Zebra Print Party Dress</h2>
+      <p>Party hard with animal print and funky accessories.</p>
+      <button class="btn" onclick="openModal('Zebra Print Party Dress', 'Layered skirts, animal print, plastic bangles — everything that screams 80s party mode! The bold zebra print and unconventional shapes made this a staple for partygoers and club lovers of the era.')">View Details</button>
+    </section>
+
+    <!-- Outfit 5 -->
+    <section class="outfit-card">
+      <img src="https://i.pinimg.com/736x/f2/4c/96/f24c96c02e37d3639003ea594f553da5.jpg" />
+      <h2>Breakdance Streetwear</h2>
+      <p>Track suits, sneakers, and boombox swagger.</p>
+      <button class="btn" onclick="openModal('Breakdance Streetwear', 'Snapback hats, Adidas track suits, and gold chains. Breakdance battles not included. This style was born on the streets and embodied the hip-hop culture that ruled the 80s.')">View Details</button>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Retro Revival. All rights reserved.</p>
+    <p>
+      Follow us on <a href="#">Instagram</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a>
+    </p>
+  </footer>
+
+  <script>
+    function openModal(title, desc) {
+      document.getElementById("modal-title").innerText = title;
+      document.getElementById("modal-desc").innerText = desc;
+      document.getElementById("modal").classList.add("open");
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.remove("open");
+    }
+
+    // Optional: Close modal on background click
+    window.onclick = function(event) {
+      const modal = document.getElementById("modal");
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
